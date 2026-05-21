@@ -1,3 +1,8 @@
 node_modules/
 backend/node_modules/
 frontend/mobile/build/
+frontend/mobile/windows/
+frontend/mobile/macos/
+frontend/mobile/linux/
+frontend/mobile/ios/
+frontend/mobile/android/
