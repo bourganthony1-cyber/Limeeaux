@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RiderNav from "../../components/RiderNav";
 import { useAuth } from "../../context/AuthContext";
@@ -90,10 +90,10 @@ export default function RiderTracking() {
   return (
     <div style={{ minHeight: "100vh" }}>
       <RiderNav />
-      <div style={{ paddingTop: 64, display: "flex", height: "100vh" }}>
+      <div className="tracking-layout" style={{ paddingTop: 64, display: "flex", height: "100vh" }}>
 
         {/* ── Info Panel ── */}
-        <div style={{
+        <div className="tracking-panel" style={{
           width: 380, flexShrink: 0, height: "calc(100vh - 64px)",
           overflowY: "auto", borderRight: "1px solid var(--border)",
           background: "var(--bg-secondary)", padding: 28,

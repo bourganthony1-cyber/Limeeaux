@@ -1,4 +1,3 @@
-import React from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import { useDatabase } from "../../context/DatabaseContext";
 import { Users, Car, DollarSign, TrendingUp, AlertCircle, Clock, CheckCircle } from "lucide-react";

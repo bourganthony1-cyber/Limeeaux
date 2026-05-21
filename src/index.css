@@ -306,9 +306,34 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
 /* ── Responsive ── */
+.hero-cards { display: flex; flex-direction: column; gap: 16px; }
+
+@media (max-width: 1100px) {
+  .hero-cards { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  .rider-layout,
+  .driver-layout,
+  .tracking-layout {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+  .rider-panel,
+  .tracking-panel {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .container { padding: 0 16px; }
   .sidebar { transform: translateX(-100%); z-index: 100; }
   .sidebar.open { transform: translateX(0); }
+  nav[style*="padding: 0 32px"] { padding: 0 16px !important; }
+  section[style*="padding: 120px 40px"] { padding: 100px 20px 60px !important; }
 }

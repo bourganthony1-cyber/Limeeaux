@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Car, Navigation, Shield, Star, Zap, Clock, MapPin, ChevronRight } from "lucide-react";
 
@@ -90,7 +89,7 @@ export default function Landing() {
           <div style={{
             position: "absolute", right: 40, top: "50%", transform: "translateY(-50%)",
             display: "flex", flexDirection: "column", gap: 16,
-          }} className="animate-in" id="hero-cards">
+          }} className="animate-in hero-cards">
             <div className="glass-card" style={{ padding: 20, minWidth: 260 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                 <div style={{

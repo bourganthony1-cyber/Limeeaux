@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RiderNav from "../../components/RiderNav";
-import { MapPin, Navigation, Car, Zap, ChevronRight, Star, Clock } from "lucide-react";
+import { Navigation, Car, Zap, Clock } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useDatabase } from "../../context/DatabaseContext";
 
@@ -63,15 +63,16 @@ export default function RiderHome() {
     // Request the ride in the database. This will save to localStorage and broadcast to the Driver.
     requestRide(user.uid, user.displayName || "Rider", pickup, dropoff, selected, price);
     setSearching(false);
+    navigate("/rider/tracking");
   };
 
   return (
     <div style={{ minHeight: "100vh" }}>
       <RiderNav />
-      <div style={{ paddingTop: 64, display: "flex", height: "100vh" }}>
+      <div className="rider-layout" style={{ paddingTop: 64, display: "flex", height: "100vh" }}>
 
         {/* ── Left Panel ── */}
-        <div style={{
+        <div className="rider-panel" style={{
           width: 400, flexShrink: 0, height: "calc(100vh - 64px)",
           overflowY: "auto", borderRight: "1px solid var(--border)",
           background: "var(--bg-secondary)", padding: 28,

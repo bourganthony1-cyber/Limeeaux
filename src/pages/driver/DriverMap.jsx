@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DriverNav from "../../components/DriverNav";
 import { useAuth } from "../../context/AuthContext";
 import { useDatabase } from "../../context/DatabaseContext";
-import { Navigation, MapPin } from "lucide-react";
+import { Navigation } from "lucide-react";
 
 export default function DriverMap() {
   const navigate = useNavigate();

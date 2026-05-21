@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DriverNav from "../../components/DriverNav";
 import { DollarSign, TrendingUp, Clock, Star } from "lucide-react";
 

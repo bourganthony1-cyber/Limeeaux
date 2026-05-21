@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import { useDatabase } from "../../context/DatabaseContext";
 import { Search, MapPin, Navigation, Star, Trash2 } from "lucide-react";
@@ -25,14 +25,12 @@ export default function AdminRides() {
     const driverMatch = r.driverName ? r.driverName.toLowerCase().includes(q) : false;
     const matchS = idMatch || riderMatch || driverMatch;
 
-    let matchSt = false;
-    if (statusF === "all") {
-      matchSt = true;
-    } else if (statusF === "active") {
-      matchSt = r.status !== "completed" && r.status !== "cancelled";
-    } else {
-      matchSt = r.status === statusF;
-    }
+    const matchSt =
+      statusF === "all"
+        ? true
+        : statusF === "active"
+          ? r.status !== "completed" && r.status !== "cancelled"
+          : r.status === statusF;
 
     return matchS && matchSt;
   });

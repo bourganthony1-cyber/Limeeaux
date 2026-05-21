@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import { useDatabase } from "../../context/DatabaseContext";
 import { useAuth } from "../../context/AuthContext";
-import { Search, Shield, UserCheck, UserX, Star } from "lucide-react";
+import { Search, UserCheck, UserX, Star } from "lucide-react";
 
 const roleColor  = { admin: "badge-purple", driver: "badge-blue", rider: "badge-green" };
 const statusColor = { active: "badge-green", suspended: "badge-red" };

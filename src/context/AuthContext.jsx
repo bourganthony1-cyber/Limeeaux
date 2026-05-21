@@ -1,43 +1,47 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { useDatabase } from "./DatabaseContext";
 
 const AuthContext = createContext(null);
 
+function readStoredSession() {
+  try {
+    const stored = sessionStorage.getItem("limeeaux_user");
+    if (!stored) return { user: null, role: null };
+    const parsed = JSON.parse(stored);
+    return { user: parsed.user ?? null, role: parsed.role ?? null };
+  } catch {
+    return { user: null, role: null };
+  }
+}
+
 export function AuthProvider({ children }) {
-  const [user, setUser]       = useState(null);
-  const [role, setRole]       = useState(null); // "rider" | "driver" | "admin"
-  const [loading, setLoading] = useState(true);
+  const stored = readStoredSession();
+  const [user, setUser] = useState(stored.user);
+  const [role, setRole] = useState(stored.role);
+  const [loading] = useState(false);
   const { users, registerUser } = useDatabase();
 
-  useEffect(() => {
-    // Check sessionStorage for persisted mock session (per-tab isolation)
-    const stored = sessionStorage.getItem("limeeaux_user");
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      setUser(parsed.user);
-      setRole(parsed.role);
-    }
-    setLoading(false);
+  const logout = useCallback(() => {
+    setUser(null);
+    setRole(null);
+    sessionStorage.removeItem("limeeaux_user");
   }, []);
 
-  // Enforce suspension in real-time across tabs
   useEffect(() => {
-    if (user && users.length > 0) {
-      const dbUser = users.find((u) => u.uid === user.uid);
-      if (dbUser && dbUser.status === "suspended") {
+    if (!user || users.length === 0) return;
+    const dbUser = users.find((u) => u.uid === user.uid);
+    if (dbUser?.status === "suspended") {
+      const timer = setTimeout(() => {
         logout();
-        // Delay alert slightly to avoid React rendering loop errors
-        setTimeout(() => {
-          alert("Session Terminated: Your account has been suspended by the administrator.");
-        }, 100);
-      }
+        alert("Session Terminated: Your account has been suspended by the administrator.");
+      }, 0);
+      return () => clearTimeout(timer);
     }
-  }, [users, user]);
+  }, [users, user, logout]);
 
   const loginWithGoogle = async (selectedRole = "rider") => {
-    // Standard mock credentials mapping to default DB users for instant dashboard demo
     let mockUser = {
-      uid: "mock-uid-google-rider-" + Math.floor(Math.random() * 1000),
+      uid: `mock-uid-google-rider-${Math.floor(Math.random() * 1000)}`,
       displayName: "Guest Rider",
       email: "guest@limeeaux.app",
       photoURL: null,
@@ -54,7 +58,7 @@ export function AuthProvider({ children }) {
       };
     } else if (selectedRole === "driver") {
       mockUser = {
-        uid: "driver-marcus", // Marcus Williams
+        uid: "driver-marcus",
         displayName: "Marcus Williams",
         email: "marcus@driver.io",
         photoURL: null,
@@ -62,7 +66,7 @@ export function AuthProvider({ children }) {
       };
     } else if (selectedRole === "rider") {
       mockUser = {
-        uid: "rider-samantha", // Samantha Liu
+        uid: "rider-samantha",
         displayName: "Samantha Liu",
         email: "sam.liu@mail.com",
         photoURL: null,
@@ -70,12 +74,11 @@ export function AuthProvider({ children }) {
       };
     }
 
-    // Register user in our simulated DB
     const dbProfile = registerUser({
       uid: mockUser.uid,
       displayName: mockUser.displayName,
       email: mockUser.email,
-      role: selectedRole
+      role: selectedRole,
     });
 
     if (dbProfile.status === "suspended") {
@@ -92,40 +95,32 @@ export function AuthProvider({ children }) {
     if (otp !== "000000" && otp.length !== 6) throw new Error("Invalid OTP");
 
     const uid = `mock-uid-phone-${phone}`;
-    
-    // Check if user is suspended in DB first
-    const existingUser = users.find(u => u.uid === uid);
-    if (existingUser && existingUser.status === "suspended") {
+    const existingUser = users.find((u) => u.uid === uid);
+    if (existingUser?.status === "suspended") {
       throw new Error("This account is suspended and cannot log in.");
     }
 
     const mockUser = {
       uid,
-      displayName: selectedRole === "driver" ? `Driver (${phone.slice(-4)})` : `Rider (${phone.slice(-4)})`,
+      displayName:
+        selectedRole === "driver" ? `Driver (${phone.slice(-4)})` : `Rider (${phone.slice(-4)})`,
       email: `${phone}@phone.limeeaux.app`,
       photoURL: null,
       provider: "phone",
       phoneNumber: phone,
     };
 
-    // Register user in our simulated DB
     registerUser({
       uid: mockUser.uid,
       displayName: mockUser.displayName,
       email: mockUser.email,
-      role: selectedRole
+      role: selectedRole,
     });
 
     setUser(mockUser);
     setRole(selectedRole);
     sessionStorage.setItem("limeeaux_user", JSON.stringify({ user: mockUser, role: selectedRole }));
     return mockUser;
-  };
-
-  const logout = () => {
-    setUser(null);
-    setRole(null);
-    sessionStorage.removeItem("limeeaux_user");
   };
 
   const updateRole = (newRole) => {
@@ -136,12 +131,15 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, role, loading, loginWithGoogle, loginWithPhone, logout, updateRole }}>
+    <AuthContext.Provider
+      value={{ user, role, loading, loginWithGoogle, loginWithPhone, logout, updateRole }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("useAuth must be used inside <AuthProvider>");

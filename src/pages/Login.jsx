@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useSearchParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 /* ── Stitch "Lumiere" Design System — Electric Blue glassmorphic dark theme ── */
@@ -57,7 +57,9 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error,   setError]   = useState("");
 
-  useEffect(() => { if (user) navigate("/dashboard", { replace: true }); }, [user]);
+  useEffect(() => {
+    if (user) navigate("/dashboard", { replace: true });
+  }, [user, navigate]);
 
   const glassCard = {
     background: "rgba(18,20,20,0.5)",
@@ -116,7 +118,7 @@ export default function Login() {
     if (code.length < 6) { setError("Enter all 6 digits."); return; }
     setError(""); setLoading(true);
     try { await loginWithPhone(phone, code, role); navigate("/dashboard"); }
-    catch (e) { setError("Invalid verification code. Please try again."); }
+    catch (err) { setError(err.message || "Invalid verification code. Please try again."); }
     finally { setLoading(false); }
   };
 
@@ -319,7 +321,7 @@ export default function Login() {
         </div>
 
         <p style={{ textAlign: "center", marginTop: 24, color: S.outlineVar, fontSize: 13 }}>
-          🔐 Powered by Firebase Authentication
+          Demo mode · Google mock login · Phone OTP <strong style={{ color: S.primaryCont }}>000000</strong>
         </p>
       </div>
 
