@@ -4,6 +4,8 @@ A full-stack **rideshare demo** built with React and Vite — rider booking, dri
 
 **Repo:** [github.com/bourganthony1-cyber/Limeeaux](https://github.com/bourganthony1-cyber/Limeeaux)
 
+**Live demo:** [limeeaux.vercel.app](https://limeeaux.vercel.app)
+
 ## Quick start
 
 ```bash
