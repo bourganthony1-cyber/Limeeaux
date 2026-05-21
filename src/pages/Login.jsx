@@ -40,8 +40,10 @@ function PhoneIcon() {
 const ROLES = [
   { id: "rider",  emoji: "🚗", label: "Rider",  sub: "Book rides instantly" },
   { id: "driver", emoji: "🚙", label: "Driver", sub: "Earn on your schedule" },
-  { id: "admin",  emoji: "⚙️", label: "Admin",  sub: "Manage the platform" },
 ];
+
+// Admin access is URL-only (/login?role=admin) — not shown in the public picker
+const ALL_ROLES = [...ROLES, { id: "admin", emoji: "⚙️", label: "Admin", sub: "Manage the platform" }];
 
 export default function Login() {
   const [params]      = useSearchParams();
@@ -181,7 +183,7 @@ export default function Login() {
                 ))}
               </div>
               <button style={primaryBtn} onClick={() => setStep("method")}>
-                Continue as {ROLES.find(r => r.id === role)?.label}
+                Continue as {ALL_ROLES.find(r => r.id === role)?.label}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </>
@@ -199,7 +201,7 @@ export default function Login() {
               </button>
               <h2 style={{ fontSize: 24, fontWeight: 700, color: S.onSurface, marginBottom: 4 }}>Welcome back</h2>
               <p style={{ color: S.onSurfaceVar, fontSize: 15, marginBottom: 28 }}>
-                Sign in as <strong style={{ color: S.primary }}>{ROLES.find(r=>r.id===role)?.label}</strong>
+                Sign in as <strong style={{ color: S.primary }}>{ALL_ROLES.find(r=>r.id===role)?.label}</strong>
               </p>
 
               <button style={primaryBtn} onClick={handleGoogle} disabled={loading}>
