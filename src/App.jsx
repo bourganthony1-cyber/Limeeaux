@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { DatabaseProvider } from "./context/DatabaseContext";
 
 // Pages
 import Landing        from "./pages/Landing";
@@ -30,8 +31,6 @@ function RoleRedirect() {
   if (role === "admin")  return <Navigate to="/admin"  replace />;
   return <Navigate to="/rider" replace />;
 }
-
-import { DatabaseProvider } from "./context/DatabaseContext";
 
 export default function App() {
   return (

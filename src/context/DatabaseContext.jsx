@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const DatabaseContext = createContext(null);
 
 const DEFAULT_USERS = [
-  { uid: "mock-uid-google", name: "Anthony Bourg", email: "anthony@rideflow.app", role: "admin", status: "active", joined: "Jan 2026", trips: 0, rating: 5.0 },
+  { uid: "mock-uid-google", name: "Limeeaux Admin", email: "admin@limeeaux.app", role: "admin", status: "active", joined: "Jan 2026", trips: 0, rating: 5.0 },
   { uid: "driver-marcus", name: "Marcus Williams", email: "marcus@driver.io", role: "driver", status: "active", joined: "Feb 2026", trips: 2341, rating: 4.98, vehicle: "Toyota Camry", license: "ABC 1234" },
   { uid: "rider-samantha", name: "Samantha Liu", email: "sam.liu@mail.com", role: "rider", status: "active", joined: "Mar 2026", trips: 142, rating: 4.8 },
   { uid: "driver-priya", name: "Priya Kapoor", email: "priya.k@driver.net", role: "driver", status: "active", joined: "Feb 2026", trips: 1022, rating: 4.95, vehicle: "Tesla Model 3", license: "TSLA 777" },
@@ -16,7 +16,7 @@ const DEFAULT_RIDES = [
   { id: "RD-8840", riderId: "rider-samantha", riderName: "Samantha Liu", driverId: "driver-marcus", driverName: "Marcus W.", from: "Main & 5th", to: "City Park", fare: "$11.20", status: "completed", date: "May 20, 2026", time: "9:14 AM", rating: 5, type: "standard" },
   { id: "RD-8839", riderId: "driver-priya", riderName: "Priya K.", driverId: "driver-aisha", driverName: "Aisha M.", from: "Airport T1", to: "Grand Hotel", fare: "$22.80", status: "completed", date: "May 19, 2026", time: "6:45 PM", rating: 4, type: "comfort" },
   { id: "RD-8838", riderId: "rider-james", riderName: "James C.", driverId: "driver-luis", driverName: "Luis R.", from: "Downtown", to: "Suburbs", fare: "$13.60", status: "cancelled", date: "May 19, 2026", time: "2:30 PM", rating: null, type: "comfort" },
-  { id: "RD-8837", riderId: "mock-uid-google", riderName: "Anthony B.", driverId: "driver-carlos", driverName: "Carlos D.", from: "Home", to: "Gym Central", fare: "$5.40", status: "completed", date: "May 18, 2026", time: "8:00 AM", rating: 5, type: "green" },
+  { id: "RD-8837", riderId: "mock-uid-google", riderName: "Admin", driverId: "driver-carlos", driverName: "Carlos D.", from: "Home", to: "Gym Central", fare: "$5.40", status: "completed", date: "May 18, 2026", time: "8:00 AM", rating: 5, type: "green" },
   { id: "RD-8836", riderId: "rider-maria", riderName: "Maria S.", driverId: "driver-priya", driverName: "Priya K.", from: "Coffee Dist.", to: "Midtown", fare: "$9.90", status: "completed", date: "May 18, 2026", time: "10:45 PM", rating: 3, type: "standard" },
   { id: "RD-8835", riderId: "rider-tom", riderName: "Tom H.", driverId: "driver-sam", driverName: "Sam T.", from: "Skybar", to: "Home", fare: "$13.60", status: "completed", date: "May 17, 2026", time: "11:00 AM", rating: 4, type: "standard" }
 ];
@@ -29,7 +29,7 @@ export function DatabaseProvider({ children }) {
   const [channel, setChannel] = useState(null);
 
   useEffect(() => {
-    const bc = new BroadcastChannel("rideflow_db_channel");
+    const bc = new BroadcastChannel("limeeaux_db_channel");
     setChannel(bc);
 
     bc.onmessage = (event) => {
@@ -40,7 +40,7 @@ export function DatabaseProvider({ children }) {
 
     // Listen to native storage events (useful fallback and cross-tab check)
     const handleStorageChange = (e) => {
-      if (e.key === "rideflow_db_users" || e.key === "rideflow_db_rides") {
+      if (e.key === "limeeaux_db_users" || e.key === "limeeaux_db_rides") {
         loadData();
       }
     };
@@ -56,15 +56,15 @@ export function DatabaseProvider({ children }) {
   }, []);
 
   const loadData = () => {
-    let localUsers = localStorage.getItem("rideflow_db_users");
-    let localRides = localStorage.getItem("rideflow_db_rides");
+    let localUsers = localStorage.getItem("limeeaux_db_users");
+    let localRides = localStorage.getItem("limeeaux_db_rides");
 
     if (!localUsers) {
-      localStorage.setItem("rideflow_db_users", JSON.stringify(DEFAULT_USERS));
+      localStorage.setItem("limeeaux_db_users", JSON.stringify(DEFAULT_USERS));
       localUsers = JSON.stringify(DEFAULT_USERS);
     }
     if (!localRides) {
-      localStorage.setItem("rideflow_db_rides", JSON.stringify(DEFAULT_RIDES));
+      localStorage.setItem("limeeaux_db_rides", JSON.stringify(DEFAULT_RIDES));
       localRides = JSON.stringify(DEFAULT_RIDES);
     }
 
@@ -79,13 +79,13 @@ export function DatabaseProvider({ children }) {
   };
 
   const saveUsers = (newUsers) => {
-    localStorage.setItem("rideflow_db_users", JSON.stringify(newUsers));
+    localStorage.setItem("limeeaux_db_users", JSON.stringify(newUsers));
     setUsers(newUsers);
     broadcastUpdate();
   };
 
   const saveRides = (newRides) => {
-    localStorage.setItem("rideflow_db_rides", JSON.stringify(newRides));
+    localStorage.setItem("limeeaux_db_rides", JSON.stringify(newRides));
     setRides(newRides);
     broadcastUpdate();
   };
@@ -99,14 +99,14 @@ export function DatabaseProvider({ children }) {
     const newUser = {
       uid: userProfile.uid,
       name: userProfile.displayName || userProfile.name || "User",
-      email: userProfile.email || "no-email@rideflow.app",
+      email: userProfile.email || "no-email@limeeaux.app",
       role: userProfile.role || "rider",
       status: "active",
       joined: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short" }),
       trips: 0,
       rating: 5.0,
       vehicle: userProfile.role === "driver" ? "Tesla Model Y" : undefined,
-      license: userProfile.role === "driver" ? "RIDE FLOW" : undefined
+      license: userProfile.role === "driver" ? "LMX 0001" : undefined
     };
 
     const updated = [...users, newUser];

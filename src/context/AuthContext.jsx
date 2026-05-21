@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     // Check sessionStorage for persisted mock session (per-tab isolation)
-    const stored = sessionStorage.getItem("rideflow_user");
+    const stored = sessionStorage.getItem("limeeaux_user");
     if (stored) {
       const parsed = JSON.parse(stored);
       setUser(parsed.user);
@@ -39,16 +39,16 @@ export function AuthProvider({ children }) {
     let mockUser = {
       uid: "mock-uid-google-rider-" + Math.floor(Math.random() * 1000),
       displayName: "Guest Rider",
-      email: "guest@rideflow.app",
+      email: "guest@limeeaux.app",
       photoURL: null,
       provider: "google",
     };
 
     if (selectedRole === "admin") {
       mockUser = {
-        uid: "mock-uid-google", // Anthony Bourg (admin)
-        displayName: "Anthony Bourg",
-        email: "anthony@rideflow.app",
+        uid: "mock-uid-google",
+        displayName: "Limeeaux Admin",
+        email: "admin@limeeaux.app",
         photoURL: null,
         provider: "google",
       };
@@ -84,7 +84,7 @@ export function AuthProvider({ children }) {
 
     setUser(mockUser);
     setRole(selectedRole);
-    sessionStorage.setItem("rideflow_user", JSON.stringify({ user: mockUser, role: selectedRole }));
+    sessionStorage.setItem("limeeaux_user", JSON.stringify({ user: mockUser, role: selectedRole }));
     return mockUser;
   };
 
@@ -102,7 +102,7 @@ export function AuthProvider({ children }) {
     const mockUser = {
       uid,
       displayName: selectedRole === "driver" ? `Driver (${phone.slice(-4)})` : `Rider (${phone.slice(-4)})`,
-      email: `${phone}@phone.rideflow.app`,
+      email: `${phone}@phone.limeeaux.app`,
       photoURL: null,
       provider: "phone",
       phoneNumber: phone,
@@ -118,20 +118,20 @@ export function AuthProvider({ children }) {
 
     setUser(mockUser);
     setRole(selectedRole);
-    sessionStorage.setItem("rideflow_user", JSON.stringify({ user: mockUser, role: selectedRole }));
+    sessionStorage.setItem("limeeaux_user", JSON.stringify({ user: mockUser, role: selectedRole }));
     return mockUser;
   };
 
   const logout = () => {
     setUser(null);
     setRole(null);
-    sessionStorage.removeItem("rideflow_user");
+    sessionStorage.removeItem("limeeaux_user");
   };
 
   const updateRole = (newRole) => {
     setRole(newRole);
     if (user) {
-      sessionStorage.setItem("rideflow_user", JSON.stringify({ user, role: newRole }));
+      sessionStorage.setItem("limeeaux_user", JSON.stringify({ user, role: newRole }));
     }
   };
 

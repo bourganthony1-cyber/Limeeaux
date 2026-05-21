@@ -63,7 +63,7 @@ export default function Splash() {
           color: "#e2e2e2", margin: 0,
           textShadow: "0 0 40px rgba(46,91,255,0.6), 0 0 20px rgba(184,195,255,0.3)",
         }}>
-          RideFlow
+          Limeeaux
         </h1>
       </div>
 

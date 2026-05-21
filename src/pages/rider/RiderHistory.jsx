@@ -4,12 +4,12 @@ import RiderNav from "../../components/RiderNav";
 import { MapPin, Navigation, Star, ChevronRight, Filter } from "lucide-react";
 
 const rides = [
-  { id: 1, date: "May 19, 2026", time: "9:14 AM",  from: "Home",              to: "Downtown Office",  fare: "$11.20", rating: 5, driver: "Marcus W.", type: "RideFlow",  status: "completed" },
+  { id: 1, date: "May 19, 2026", time: "9:14 AM",  from: "Home",              to: "Downtown Office",  fare: "$11.20", rating: 5, driver: "Marcus W.", type: "Limeeaux",  status: "completed" },
   { id: 2, date: "May 18, 2026", time: "6:45 PM",  from: "Downtown Office",   to: "Airport T-B",      fare: "$22.80", rating: 4, driver: "Priya K.",  type: "Comfort",   status: "completed" },
   { id: 3, date: "May 17, 2026", time: "11:00 AM", from: "Airport T-B",       to: "Hotel Grand",      fare: "$18.50", rating: 5, driver: "Luis R.",   type: "Comfort",   status: "completed" },
-  { id: 4, date: "May 15, 2026", time: "2:30 PM",  from: "Coffee District",   to: "Midtown Mall",     fare: "$7.90",  rating: 3, driver: "Aisha M.",  type: "RideFlow",  status: "completed" },
+  { id: 4, date: "May 15, 2026", time: "2:30 PM",  from: "Coffee District",   to: "Midtown Mall",     fare: "$7.90",  rating: 3, driver: "Aisha M.",  type: "Limeeaux",  status: "completed" },
   { id: 5, date: "May 14, 2026", time: "8:00 AM",  from: "Home",              to: "Gym Central",      fare: "$5.40",  rating: 5, driver: "Carlos D.", type: "EcoRide",   status: "completed" },
-  { id: 6, date: "May 12, 2026", time: "10:45 PM", from: "Skybar Rooftop",    to: "Home",             fare: "$13.60", rating: 4, driver: "Sam T.",    type: "RideFlow",  status: "completed" },
+  { id: 6, date: "May 12, 2026", time: "10:45 PM", from: "Skybar Rooftop",    to: "Home",             fare: "$13.60", rating: 4, driver: "Sam T.",    type: "Limeeaux",  status: "completed" },
 ];
 
 const statusColor = { completed: "badge-green", cancelled: "badge-red" };

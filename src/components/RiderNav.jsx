@@ -25,7 +25,7 @@ export default function RiderNav() {
         }}>
           <Car size={16} color="#fff" />
         </div>
-        <span style={{ fontWeight: 800, fontSize: "1rem" }}>RideFlow</span>
+        <span style={{ fontWeight: 800, fontSize: "1rem" }}>Limeeaux</span>
       </div>
 
       <div style={{ display: "flex", gap: 4 }}>

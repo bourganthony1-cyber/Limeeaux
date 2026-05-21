@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RiderNav from "../../components/RiderNav";
 import { MapPin, Navigation, Car, Zap, ChevronRight, Star, Clock } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
+import { useDatabase } from "../../context/DatabaseContext";
 
 const rideTypes = [
-  { id: "standard", label: "RideFlow",  desc: "Affordable everyday rides", price: "$8–12",  time: "4 min",  icon: "🚗" },
+  { id: "standard", label: "Limeeaux",  desc: "Affordable everyday rides", price: "$8–12",  time: "4 min",  icon: "🚗" },
   { id: "comfort",  label: "Comfort",   desc: "Extra legroom & AC",         price: "$14–18", time: "6 min",  icon: "🚙" },
   { id: "xl",       label: "RideXL",    desc: "Up to 6 passengers",         price: "$18–24", time: "8 min",  icon: "🚐" },
   { id: "green",    label: "EcoRide",   desc: "100% electric vehicles",     price: "$10–15", time: "5 min",  icon: "🌿" },
@@ -30,9 +32,6 @@ const MapPlaceholder = () => (
     }} />
   </div>
 );
-
-import { useAuth } from "../../context/AuthContext";
-import { useDatabase } from "../../context/DatabaseContext";
 
 export default function RiderHome() {
   const navigate = useNavigate();
@@ -151,7 +150,7 @@ export default function RiderHome() {
             <Zap size={18} color="var(--accent-green)" />
             <div>
               <div style={{ fontWeight: 600, fontSize: "0.875rem", color: "var(--accent-green)" }}>First ride free!</div>
-              <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Use code RIDEFLOW at checkout</div>
+              <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Use code LIMEEAUX at checkout</div>
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ export default function Landing() {
           }}>
             <Car size={18} color="#fff" />
           </div>
-          <span style={{ fontWeight: 800, fontSize: "1.125rem", letterSpacing: "-0.5px" }}>RideFlow</span>
+          <span style={{ fontWeight: 800, fontSize: "1.125rem", letterSpacing: "-0.5px" }}>Limeeaux</span>
         </div>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <Link to="/login" className="btn btn-outline btn-sm">Sign In</Link>
@@ -71,7 +71,7 @@ export default function Landing() {
               <span className="gradient-text">arrive faster.</span>
             </h1>
             <p style={{ fontSize: "1.125rem", marginBottom: 40, maxWidth: 520, lineHeight: 1.7 }}>
-              RideFlow connects riders with top-rated drivers in seconds. Safe, affordable, and always on time.
+              Limeeaux connects riders with top-rated drivers in seconds. Safe, affordable, and always on time.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <Link to="/login?role=rider" className="btn btn-primary btn-lg">
@@ -161,7 +161,7 @@ export default function Landing() {
       <section style={{ padding: "80px 40px" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <h2>Why riders choose <span className="gradient-text">RideFlow</span></h2>
+            <h2>Why riders choose <span className="gradient-text">Limeeaux</span></h2>
             <p style={{ marginTop: 12, maxWidth: 500, margin: "12px auto 0" }}>
               Built for modern cities, designed for real people.
             </p>
@@ -207,9 +207,9 @@ export default function Landing() {
         color: "var(--text-muted)", fontSize: "0.875rem",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, color: "var(--text-primary)" }}>
-          <Car size={16} color="var(--accent-blue)" /> RideFlow
+          <Car size={16} color="var(--accent-blue)" /> Limeeaux
         </div>
-        <div>© 2026 RideFlow. All rights reserved.</div>
+        <div>© 2026 Limeeaux. All rights reserved.</div>
       </footer>
     </div>
   );

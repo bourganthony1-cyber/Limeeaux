@@ -22,7 +22,7 @@ export default function DriverNav() {
         }}>
           <Navigation size={16} color="#000" />
         </div>
-        <span style={{ fontWeight: 800, fontSize: "1rem" }}>RideFlow Driver</span>
+        <span style={{ fontWeight: 800, fontSize: "1rem" }}>Limeeaux Driver</span>
       </div>
       <div style={{ display: "flex", gap: 4 }}>
         {[

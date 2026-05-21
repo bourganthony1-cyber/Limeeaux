@@ -25,7 +25,7 @@ export default function AdminSidebar() {
             <Shield size={18} color="#fff" />
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: "0.9375rem", lineHeight: 1.2 }}>RideFlow</div>
+            <div style={{ fontWeight: 800, fontSize: "0.9375rem", lineHeight: 1.2 }}>Limeeaux</div>
             <div style={{ fontSize: "0.7rem", color: "var(--accent-purple)", fontWeight: 600 }}>ADMIN</div>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function AdminSidebar() {
         </button>
         <div style={{ padding: "12px 14px", marginTop: 8 }}>
           <div style={{ fontSize: "0.8rem", fontWeight: 600 }}>{user?.displayName || "Admin"}</div>
-          <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{user?.email || "admin@rideflow.app"}</div>
+          <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{user?.email || "admin@limeeaux.app"}</div>
         </div>
       </div>
     </aside>

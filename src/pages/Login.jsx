@@ -114,7 +114,7 @@ export default function Login() {
     if (code.length < 6) { setError("Enter all 6 digits."); return; }
     setError(""); setLoading(true);
     try { await loginWithPhone(phone, code, role); navigate("/dashboard"); }
-    catch (e) { setError("Invalid code. Use 000000 for demo."); }
+    catch (e) { setError("Invalid verification code. Please try again."); }
     finally { setLoading(false); }
   };
 
@@ -146,7 +146,7 @@ export default function Login() {
         {/* Brand */}
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", color: S.onSurface, margin: 0 }}>
-            RideFlow<span style={{ color: S.primaryCont }}>.</span>
+            Limeeaux<span style={{ color: S.primaryCont }}>.</span>
           </h1>
         </div>
 
@@ -155,7 +155,7 @@ export default function Login() {
           {/* ── ROLE STEP ── */}
           {step === "role" && (
             <>
-              <h2 style={{ fontSize: 24, fontWeight: 700, color: S.onSurface, marginBottom: 6 }}>Join RideFlow</h2>
+              <h2 style={{ fontSize: 24, fontWeight: 700, color: S.onSurface, marginBottom: 6 }}>Join Limeeaux</h2>
               <p style={{ color: S.onSurfaceVar, fontSize: 15, marginBottom: 24 }}>How will you use the app?</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                 {ROLES.map(r => (
