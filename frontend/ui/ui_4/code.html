@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumiere - Ride Options</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-surface-variant": "#c4c5d9",
+                      "surface-container": "#1e2020",
+                      "primary-container": "#2e5bff",
+                      "on-secondary-container": "#b5b5b5",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "on-secondary-fixed-variant": "#474747",
+                      "on-primary-container": "#efefff",
+                      "inverse-surface": "#e2e2e2",
+                      "on-tertiary": "#313030",
+                      "inverse-on-surface": "#2f3131",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0c0f0f",
+                      "secondary": "#c6c6c6",
+                      "secondary-fixed": "#e2e2e2",
+                      "surface-dim": "#121414",
+                      "inverse-primary": "#124af0",
+                      "on-secondary-fixed": "#1b1b1b",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "surface-container-highest": "#333535",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-container": "#f3f0ef",
+                      "outline-variant": "#434656",
+                      "tertiary-container": "#6e6d6d",
+                      "on-primary": "#002388",
+                      "on-primary-fixed": "#001356",
+                      "background": "#121414",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "surface-container-low": "#1a1c1c",
+                      "surface-bright": "#37393a",
+                      "tertiary": "#c8c6c5",
+                      "on-secondary": "#303030",
+                      "primary": "#b8c3ff",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "secondary-container": "#474747",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#282a2b",
+                      "surface": "#121414",
+                      "on-background": "#e2e2e2",
+                      "on-primary-fixed-variant": "#0035be",
+                      "surface-variant": "#333535",
+                      "on-error": "#690005",
+                      "surface-tint": "#b8c3ff",
+                      "outline": "#8e90a2",
+                      "on-surface": "#e2e2e2",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "primary-fixed": "#dde1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "xs": "4px",
+                      "margin-mobile": "20px",
+                      "sm": "12px",
+                      "lg": "24px",
+                      "margin-desktop": "40px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>body {
+    font-family: "Inter", sans-serif;
+    background-color: #000;
+    /* Level 0 Base */
+    color: #e2e2e2;
+    margin: 0;
+    overflow: hidden;
+    /* Prevent scrolling behind the bottom sheet */
+    }
+.map-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDhvkes-0qKzbwykED79A3YhFivxZeQsiupbGyBm1JNKQ8HazobrYGYEtVBECwm8wyVzQtlmiYI9zkMVdfB9kioR9zisOQFYk0FzV2hL7ggKr7zvGaqsLjfPjXM5rWgmj-9fugLCbcF22_y2uZq11A0WoSa-Dq_8sWqkFoqW3To2p_7nTXIu4TumxNuhDQ7T-ZGhHW5BB-SD7pHfHpkmiSyFDiI3f74zfWleK6q1c5g3Vtz6F2_-hAVBrENgCGED0x4jwfsgok6XAo);
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0.5;
+    /* Darken map for contrast */
+    }
+.map-gradient-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(18, 20, 20, 0.9) 40%, rgba(18, 20, 20, 1) 100%);
+    z-index: 1;
+    pointer-events: none
+    }
+/* Glassmorphism utility */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    }
+.electric-gradient {
+    background: linear-gradient(135deg, #2e5bff 0%, #124af0 100%)
+    }
+/* Hide scrollbar for vehicle list */
+.no-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex flex-col h-screen relative">
+<!-- TopAppBar Component (from JSON, modified for map context) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-transparent">
+<button class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-on-surface hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-on-surface drop-shadow-md">Lumiere</h1>
+<div class="w-10 h-10 rounded-full glass-panel overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">person</span>
+</div>
+</header>
+<!-- Background Map -->
+<div class="map-bg" data-location="New York City" style=""></div>
+<div class="map-gradient-overlay"></div>
+<!-- Map UI Controls (Floating) -->
+<div class="fixed top-24 left-margin-mobile right-margin-mobile z-40 flex flex-col gap-sm">
+<div class="glass-panel rounded-xl p-sm flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-primary pulse-dot"></div>
+<div class="flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant">Pickup</p>
+<p class="font-body-lg text-body-lg text-on-surface truncate">120 W 42nd St, New York</p>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<div class="flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant">Dropoff</p>
+<p class="font-body-lg text-body-lg text-on-surface truncate">JFK International Airport</p>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet UI -->
+<main class="fixed bottom-0 left-0 w-full z-50 bg-surface rounded-t-[32px] border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] flex flex-col max-h-[751px]">
+<!-- Drag Handle -->
+<div class="w-full flex justify-center py-sm cursor-grab">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full"></div>
+</div>
+<div class="px-margin-mobile pb-margin-mobile flex-1 overflow-y-auto no-scrollbar flex flex-col gap-lg">
+<!-- Header -->
+<div class="flex justify-between items-end">
+<h2 class="font-title-md text-title-md text-on-surface">Choose a ride</h2>
+<div class="glass-panel px-sm py-xs rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-label-caps text-label-caps text-primary">Now</span>
+</div>
+</div>
+<!-- Vehicle Options List -->
+<div class="flex flex-col gap-sm">
+<!-- Option 1: Lumiere Go -->
+<button class="w-full bg-surface-container rounded-xl p-md flex items-center gap-md border border-transparent hover:bg-surface-container-high transition-colors focus:outline-none text-left">
+<div class="w-20 h-14 bg-surface-dim rounded-lg flex items-center justify-center shrink-0 overflow-hidden relative">
+<img alt="Compact eco car" class="object-cover w-full h-full mix-blend-luminosity opacity-70" data-alt="A sleek, modern compact electric vehicle rendered against a stark dark studio background. The car is styled in a futuristic, minimal aesthetic, fitting a premium ride-hailing app. Cool, soft blue studio lighting highlights the aerodynamic curves of the car, emphasizing its eco-friendly yet high-tech nature. The overall tone is sophisticated, clean, and utilitarian, seamlessly blending into a dark-mode user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqJsO0GPm_cmF8lTPf6S1AQxuOCr5oEb4a84mzlBit7N4blKI7Y4mWNEX95p7WT7N8qL3ZHSlU8DFjvNbbc1dcOXRia3NfDAcI6Itq8QtY1cKPoFl_nAvY5mncK00dT-SLbfB0zU64kFX0PLJqiKWlukSqghSbWHBtBBXxDVRg6aPo-9fJ723PFnmJ-UcBXTFRaYPZOBZ56umy1nQjHkltzgTjhy7YBPUysXQDnX29pzS-VBvU9WG0k0Hml9ElwUIIxgQr6AxNvkE"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">Lumiere Go</h3>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-weight="fill">person</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Affordable, everyday rides</p>
+<p class="font-label-caps text-label-caps text-primary mt-1">4 mins away</p>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-on-surface">$45.20</p>
+</div>
+</button>
+<!-- Option 2: Lumiere Lux (Selected State) -->
+<button class="w-full bg-surface-container-high rounded-xl p-md flex items-center gap-md border border-primary/50 relative overflow-hidden focus:outline-none text-left">
+<!-- Subtle active glow -->
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="w-20 h-14 bg-surface-dim rounded-lg flex items-center justify-center shrink-0 overflow-hidden relative z-10">
+<img alt="Luxury sedan" class="object-cover w-full h-full mix-blend-luminosity" data-alt="A premium, executive luxury sedan shown from a dynamic angle against a pitch-black background. The car features sharp, aggressive styling lines and is illuminated by dramatic, high-contrast edge lighting that gives it a 'stealth wealth' appearance. Subtle, cold blue reflections hint at a high-end, exclusive service. The visual aesthetic is highly polished, expensive, and perfectly suited for a dark-mode luxury travel app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDijEiaKDotvucckM9Ed0OMjBVRVvAtUdqt_V4dtCvUUmIeg4u7I0gwdsqXxvotE2vTAo6EkmLHZqcVaznl0duGXPxM6sLCd4E6AWZSQePmcQDXKivlt6si374t4ahqlZlLH58voWHLITTfF3IzIJyi0qBd3AAze4v3C3sN9mS1Oz9Dpp47esCUI1eb3THNlVsDitvdzHuveR-rVkQEqcFforo-u6KuA8rNUI4KGPdTDBF6RmtTDsjg0GZrIjAKbazYSsUVoAmrMc"/>
+</div>
+<div class="flex-1 flex flex-col justify-center z-10">
+<div class="flex items-center gap-2">
+<h3 class="font-title-md text-title-md text-primary">Lumiere Lux</h3>
+<span class="material-symbols-outlined text-[16px] text-primary" data-weight="fill">person</span>
+<span class="font-body-sm text-body-sm text-primary">4</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Premium sedans, top drivers</p>
+<p class="font-label-caps text-label-caps text-primary mt-1">2 mins away</p>
+</div>
+<div class="text-right z-10">
+<p class="font-title-md text-title-md text-on-surface">$72.50</p>
+</div>
+</button>
+<!-- Option 3: Lumiere XL -->
+<button class="w-full bg-surface-container rounded-xl p-md flex items-center gap-md border border-transparent hover:bg-surface-container-high transition-colors focus:outline-none text-left">
+<div class="w-20 h-14 bg-surface-dim rounded-lg flex items-center justify-center shrink-0 overflow-hidden relative">
+<img alt="Large SUV" class="object-cover w-full h-full mix-blend-luminosity opacity-70" data-alt="A large, modern luxury SUV presented in a sleek, dark studio setting. The vehicle is robust and imposing, yet refined, with smooth surfaces reflecting minimal, precise lighting strips. The mood is secure, spacious, and premium. The deep, rich shadows and subtle metallic highlights align with a sophisticated, dark-mode-first aesthetic for a high-end digital concierge platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU2tr-0JZ_OdFcxAMmay0Y9y_90JCO7U2WOFBFDKMHOf-CWjbyReZy9S7I43UBSH2sJNSSVXRfj6VtpGFXUPfwIh1REAF_CV7wzId33bkDXPAGO1cVUb6AvrTPN1Kh0HXELd-7NXMwzFA6UNR6KOvG_f7TzU94nPl1YQ-8Sime_y4-VWtqoGcNArMP97xxqxfIIpg6SmbN7tEwvUBaJeM12iPA9U5orwyju_woBUezPWzdNEwGyVwaYuPv3t20_xZCgkLu9z-rHiw"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">Lumiere XL</h3>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-weight="fill">person</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">6</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">SUVs for groups up to 6</p>
+<p class="font-label-caps text-label-caps text-primary mt-1">7 mins away</p>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-on-surface">$95.00</p>
+</div>
+</button>
+</div>
+<!-- Sticky Bottom Action Area -->
+<div class="mt-auto pt-sm flex flex-col gap-sm bg-surface">
+<!-- Payment Selector -->
+<button class="w-full glass-panel rounded-xl p-sm flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-black rounded flex items-center justify-center border border-white/20 text-white font-bold text-xs tracking-tighter">
+                            Pay
+                        </div>
+<div class="text-left">
+<p class="font-body-sm text-body-sm text-on-surface">Apple Pay</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Personal</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Primary CTA -->
+<button class="w-full h-14 electric-gradient rounded-xl flex items-center justify-center gap-sm hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface">
+<span class="font-title-md text-title-md text-white tracking-wide">Confirm Lumiere Lux</span>
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>
